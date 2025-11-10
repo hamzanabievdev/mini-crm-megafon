@@ -1,4 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.app')
+@section('title', 'Список обращений/жалоб')
+@section('menuName', 'Клиенты')
 @section('content')
     <!--begin::Content-->
         <div id="kt_app_content" class="app-content flex-column-fluid">

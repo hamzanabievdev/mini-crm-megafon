@@ -13,4 +13,16 @@ class UserController extends Controller
     {
         return response()->json(User::all());
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $appeals = User::where('full_name', 'like', "%{$query}%")
+            ->orWhere('login', 'like', "%{$query}%")
+            ->orWhere('email', 'like', "%{$query}%")
+            ->get();
+
+        return response()->json($appeals);
+    }
 }

@@ -1,5 +1,16 @@
 const modalEl = document.getElementById('modal_add_user');
 let modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+
+function getRoleUser(role) {
+    if(role === "admin") {
+        return "Администратор";
+    } else if(role === "operator") {
+        return "Оператор";
+    } else if(role === "backoffice") {
+        return "Бэк-оффис";
+    }
+}
+
 const create_user = document.getElementById('create_user');
 
 create_user.addEventListener('click', async () => {
@@ -75,17 +86,26 @@ create_user.addEventListener('click', async () => {
         const user = data.user;
         const table = $('#kt_ecommerce_products_table').DataTable();
 
-        const row = `
+        let row = `
             <tr>
                 <td></td>
-                <td class="text-start min-w-100px">${user.full_name}</td>
+                <td class="text-start min-w-100px">
+                    ${user.full_name}
+                </td>
                 <td></td>
-                <td class="text-end pe-0">${user.login || '-'}</td>
+                <td class="text-end pe-0">
+                    ${user.login ? user.login: '-'}
+                </td>
                 <td></td>
-                <td class="text-end pe-0">${user.email || '-'}</td>
+                <td class="text-end pe-0">
+                    ${user.email ? user.email: '-'}
+                </td>
                 <td></td>
-                <td class="text-end">${user.role}</td>
+                <td class="text-end">
+                    ${getRoleUser(user.role)}
+                </td>
             </tr>`;
+
         table.row.add($(row)).draw();
 
         fields.forEach(id => document.getElementById(id).value = '');

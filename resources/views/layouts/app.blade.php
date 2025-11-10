@@ -2,17 +2,9 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href=""/>
-		<title>Mini CRM Megafon - {{ $contentInfo->pageTitle }}</title>
+		<title>@yield('title', 'Mini CRM Megafon')</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Mini CRM Megafon - {{ $contentInfo->pageTitle }}" />
-		<meta name="keywords" content="{{ $contentInfo->pageTitle }}" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta property="og:locale" content="en_US" />
-		<meta property="og:type" content="article" />
-		<meta property="og:title" content="Mini CRM Megafon - {{ $contentInfo->pageTitle }}" />
-		<meta property="og:url" content="https://keenthemes.com/metronic" />
-		<meta property="og:site_name" content="Keenthemes | Metronic" />
-		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+		<meta name="description" content="@yield('title', 'Mini CRM Megafon')" />
 		<link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 		<!--begin::Fonts(mandatory for all pages)-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
@@ -79,7 +71,7 @@
 									<div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
 										<!--begin:Menu link-->
 										<span class="menu-link">
-											<span class="menu-title">{{ $contentInfo->menuName; }}</span>
+											<span class="menu-title">@yield('menuName')</span>
 											<span class="menu-arrow d-lg-none"></span>
 										</span>
 										<!--end:Menu link-->
@@ -110,7 +102,7 @@
 												<!--begin::Username-->
 												<div class="d-flex flex-column">
 													<div class="fw-bold d-flex align-items-center fs-5">{{ $user->full_name; }}</div>
-													<a class="fw-semibold text-muted text-hover-primary fs-7">{{ $contentInfo->roleName; }}</a>
+													<a class="fw-semibold text-muted text-hover-primary fs-7">{{ $user->role; }}</a>
 												</div>
 												<!--end::Username-->
 											</div>
@@ -312,38 +304,7 @@
                                         </div>
                                         <!--end::Logo-->
 
-                                        <!--begin::sidebar menu-->
-                                        <div class="app-sidebar-menu overflow-hidden flex-column-fluid">
-                                            <div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper">
-                                                <div id="kt_app_sidebar_menu_scroll" class="scroll-y my-5 mx-3" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px" data-kt-scroll-save-state="true">
-                                                    <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6" id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                                                        <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
-                                                            <span class="menu-link">
-                                                                <span class="menu-icon">
-                                                                    <i class="ki-duotone ki-bank fs-2">
-                                                                        <span class="path1"></span>
-                                                                        <span class="path2"></span>
-                                                                    </i>
-                                                                </span>
-                                                                <span class="menu-title">{{ $contentInfo->menuName; }}</span>
-                                                                <span class="menu-arrow"></span>
-                                                            </span>
-                                                            <div class="menu-sub menu-sub-accordion">
-                                                                <div class="menu-item">
-                                                                    <a class="menu-link active" href="{{ route('main.index') }}">
-                                                                        <span class="menu-bullet">
-                                                                            <span class="bullet bullet-dot"></span>
-                                                                        </span>
-                                                                        <span class="menu-title">{{ $contentInfo->tabName; }}</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--end::sidebar menu-->
+                                        @include('layouts.sidebar')
 
                                         <!--begin::Footer-->
                                         <div class="app-sidebar-footer flex-column-auto pt-2 pb-6 px-6" id="kt_app_sidebar_footer">
@@ -368,10 +329,10 @@
                                             <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
                                                 <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
                                                     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-                                                        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">{{ $contentInfo->pageTitle; }}</h1>
+                                                        <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">@yield('title')</h1>
                                                         <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                                                             <li class="breadcrumb-item text-muted">
-                                                                <a href="{{ url('/') }}" class="text-muted text-hover-primary">{{ $contentInfo->menuName; }}</a>
+                                                                <a href="{{ url('/') }}" class="text-muted text-hover-primary">@yield('menuName')</a>
                                                             </li>
                                                         </ul>
                                                     </div>

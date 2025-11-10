@@ -14,6 +14,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
 
     Route::get('/users', [UserController::class, 'list']);
+    Route::post('/users/search', [UserController::class, 'search']);
 
     Route::post('/appeal', [AppealController::class, 'create']);
     Route::put('/appeal/{id}', [AppealController::class, 'update']);
